@@ -21,73 +21,94 @@
             overflow-x: hidden;
         }
 
-        /* Fantasminha translúcido de fundo */
+        /* Fantasminhas translúcidos de fundo */
         .ghost-background {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: 0;
             pointer-events: none;
         }
 
-        .ghost {
+        /* Posições e tamanhos diferentes para cada fantasminha */
+        .ghost-1 {
+            top: 10%;
+            left: 5%;
+            width: 120px;
+            height: 120px;
+        }
+
+        .ghost-2 {
+            top: 15%;
+            right: 8%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .ghost-3 {
+            top: 40%;
+            left: 3%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .ghost-4 {
+            top: 45%;
+            right: 5%;
+            width: 130px;
+            height: 130px;
+        }
+
+        .ghost-5 {
+            top: 70%;
+            left: 10%;
+            width: 140px;
+            height: 140px;
+        }
+
+        .ghost-6 {
+            top: 75%;
+            right: 12%;
+            width: 110px;
+            height: 110px;
+        }
+
+        /* Fantasminhas menores para mobile */
+        @media (max-width: 768px) {
+            .ghost-1 { width: 80px; height: 80px; }
+            .ghost-2 { width: 100px; height: 100px; }
+            .ghost-3 { width: 70px; height: 70px; }
+            .ghost-4 { width: 90px; height: 90px; }
+            .ghost-5 { width: 95px; height: 95px; }
+            .ghost-6 { width: 75px; height: 75px; }
+        }
+
+        .ghost-background img {
             width: 100%;
             height: 100%;
-            background: white;
-            border-radius: 50% 50% 0 0;
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+            object-fit: contain;
         }
 
-        .ghost::before {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(to right,
-                    transparent 0%,
-                    transparent 20%,
-                    white 20%,
-                    white 40%,
-                    transparent 40%,
-                    transparent 60%,
-                    white 60%,
-                    white 80%,
-                    transparent 80%);
+        /* Animações diferentes para cada fantasminha */
+        .ghost-1 { animation: float1 3s ease-in-out infinite; }
+        .ghost-2 { animation: float2 4s ease-in-out infinite; }
+        .ghost-3 { animation: float3 3.5s ease-in-out infinite; }
+        .ghost-4 { animation: float1 4.5s ease-in-out infinite; }
+        .ghost-5 { animation: float2 3.2s ease-in-out infinite; }
+        .ghost-6 { animation: float3 3.8s ease-in-out infinite; }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        .ghost-eyes {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            gap: 30px;
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
         }
 
-        .eye {
-            width: 30px;
-            height: 40px;
-            background: #333;
-            border-radius: 50%;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         /* Container principal */
@@ -111,9 +132,16 @@
         /* Grid de fotos */
         .photos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
+        }
+
+        /* Ajuste para mobile */
+        @media (max-width: 768px) {
+            .photos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
         }
 
         .photo-card {
@@ -189,14 +217,29 @@
 </head>
 
 <body>
-    <!-- Fantasminha de fundo -->
-    <div class="ghost-background">
-        <div class="ghost">
-            <div class="ghost-eyes">
-                <div class="eye"></div>
-                <div class="eye"></div>
-            </div>
-        </div>
+    <!-- Fantasminhas espalhados pela tela -->
+    <div class="ghost-background ghost-1">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
+    </div>
+
+    <div class="ghost-background ghost-2">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
+    </div>
+
+    <div class="ghost-background ghost-3">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
+    </div>
+
+    <div class="ghost-background ghost-4">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
+    </div>
+
+    <div class="ghost-background ghost-5">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
+    </div>
+
+    <div class="ghost-background ghost-6">
+        <img src="images/logo/fantasminha-boo-transparente.png" alt="Fantasminha">
     </div>
 
     <div class="container">
